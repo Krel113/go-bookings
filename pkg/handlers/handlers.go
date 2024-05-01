@@ -8,10 +8,16 @@ import (
 // HomePage is th home page handler
 func HomePage(w http.ResponseWriter, r *http.Request) {
 	// fmt.Fprintf(w, "home page")
-	htmlrender.RenderTemplate(w, "home.page.html")
+	stringMap := map[string]string{}
+	stringMap["test"] = "data home test"
+
+	htmlrender.RenderTemplate(w, "home.page.html", &htmlrender.TemplateData{StringMap: stringMap})
 }
 
 // AboutPage is the abot page handler
 func AboutPage(w http.ResponseWriter, r *http.Request) {
-	htmlrender.RenderTemplate(w, "about.page.html")
+	stringMap := map[string]string{}
+	stringMap["test"] = "data about test"
+
+	htmlrender.RenderTemplate(w, "about.page.html", &htmlrender.TemplateData{StringMap: stringMap})
 }
