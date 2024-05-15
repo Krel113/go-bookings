@@ -1,7 +1,8 @@
 package handlers
 
 import (
-	"gitlab/krel113/hello_web/pkg/htmlrender"
+	"gitlab/krel113/bookings/pkg/htmlrender"
+	"gitlab/krel113/bookings/pkg/models"
 	"net/http"
 )
 
@@ -11,7 +12,7 @@ func HomePage(w http.ResponseWriter, r *http.Request) {
 	stringMap := map[string]string{}
 	stringMap["test"] = "data home test"
 
-	htmlrender.RenderTemplate(w, "home.page.html", &htmlrender.TemplateData{StringMap: stringMap})
+	htmlrender.RenderTemplate(w, "home.page.html", &models.TemplateData{StringMap: stringMap})
 }
 
 // AboutPage is the abot page handler
@@ -19,5 +20,5 @@ func AboutPage(w http.ResponseWriter, r *http.Request) {
 	stringMap := map[string]string{}
 	stringMap["test"] = "data about test"
 
-	htmlrender.RenderTemplate(w, "about.page.html", &htmlrender.TemplateData{StringMap: stringMap})
+	htmlrender.RenderTemplate(w, "about.page.html", &models.TemplateData{StringMap: stringMap})
 }

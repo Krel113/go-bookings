@@ -2,6 +2,7 @@ package htmlrender
 
 import (
 	"errors"
+	"gitlab/krel113/bookings/pkg/models"
 	"html/template"
 	"log"
 	"net/http"
@@ -11,11 +12,6 @@ import (
 const ROOT string = "./templates/"
 
 var templatesCache = map[string]*template.Template{}
-
-type TemplateData struct {
-	StringMap map[string]string
-	IntMap    map[string]int8
-}
 
 func BuildTemplatesCache() error {
 	//Get all pagesPath
@@ -53,7 +49,7 @@ func BuildTemplatesCache() error {
 }
 
 // RenderTemplate renders html to screen
-func RenderTemplate(w http.ResponseWriter, tmplName string, data *TemplateData) {
+func RenderTemplate(w http.ResponseWriter, tmplName string, data *models.TemplateData) {
 	tmpl, ok := templatesCache[tmplName]
 	if !ok {
 		log.Fatal("template %s not found in cache", tmplName)
